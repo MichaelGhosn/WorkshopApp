@@ -1,0 +1,57 @@
+<div style="padding: 80px">
+  <form [formGroup]="partData">
+<!-- fi chi esmo wrap -->
+    <div fxLayout="row" fxLayoutGap="2vw">
+        <div fxFlex>
+          <mat-form-field  style="width: 100%">
+          <input matInput formControlName="partNumber" placeholder="Part Number">
+          </mat-form-field>
+        </div>
+        <div fxFlex>
+          <mat-form-field style="width: 100%">
+          <input  matInput formControlName="partName" placeholder="Part Name" required>
+            <mat-error *ngIf="partData.get('partName').invalid">Required</mat-error>
+          </mat-form-field>
+        </div>
+    </div>
+
+
+    <div fxLayout="row" fxLayoutGap="2vw">
+      <div fxFlex>
+        <mat-form-field style="width: 100%">
+          <input  matInput formControlName="partX" type="number" placeholder="Part X">
+        </mat-form-field>
+      </div>
+      <div fxFlex>
+        <mat-form-field style="width: 100%">
+          <input  matInput formControlName="partY" type="number" placeholder="Part Y">
+        </mat-form-field>
+      </div>
+      <div fxFlex>
+        <mat-form-field style="width: 100%">
+          <input  matInput formControlName="partZ" type="number" placeholder="Part Z">
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div fxLayout="row">
+      <div fxFlex>
+        <mat-form-field style="width: 100%">
+          <input  matInput formControlName="partWeight" type="number" placeholder="Part Weight">
+          <span matSuffix>Grams</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+  </form>
+
+   <div style="float: right">
+        <button mat-button mat-raised-button (click)="printData()">Submit</button>
+   </div>
+
+</div>
+
+
+{{partData.getRawValue() | json}}
